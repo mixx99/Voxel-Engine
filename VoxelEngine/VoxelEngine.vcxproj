@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\window\Events.cpp" />
     <ClCompile Include="source\voxel_engine.cpp" />
-    <ClCompile Include="source\window\Window.cpp" />
+    <ClCompile Include="source\window\Window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\window\Events.h" />
     <ClInclude Include="source\window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

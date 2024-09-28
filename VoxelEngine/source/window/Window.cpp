@@ -39,17 +39,22 @@ int Window::initialize(int width, int height, const char* title)
 	return 0;
 }
 
+void Window::terminate()
+{
+	glfwTerminate();
+}
+
 bool Window::isShouldClose()
 {
 	return glfwWindowShouldClose(window);
 }
 
+void Window::setShouldClose(bool flag)
+{
+	glfwSetWindowShouldClose(window, flag);
+}
+
 void Window::swapBuffers()
 {
 	glfwSwapBuffers(window);
-}
-
-void Window::terminate()
-{
-	glfwTerminate();
 }
