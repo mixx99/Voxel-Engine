@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\graphics\Shader.cpp" />
     <ClCompile Include="source\window\Events.cpp" />
     <ClCompile Include="source\voxel_engine.cpp" />
     <ClCompile Include="source\window\Window.cpp">
@@ -26,6 +27,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\graphics\Shader.h" />
     <ClInclude Include="source\window\Events.h" />
     <ClInclude Include="source\window\Window.h" />
   </ItemGroup>

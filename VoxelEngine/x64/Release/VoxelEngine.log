@@ -1,12 +1,8 @@
-﻿  voxel_engine.cpp
-  Events.cpp
-D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\source\window\Events.cpp(23,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\source\window\Events.cpp(24,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\source\window\Events.cpp(30,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\source\window\Events.cpp(31,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  Shader.cpp
+D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\source\graphics\Shader.cpp(52,33): warning C4101: 'e': unreferenced local variable
   Generating code
-  2 of 23 functions ( 8.7%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
+  0 of 211 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   VoxelEngine.vcxproj -> D:\PROJECTS\voxel_engine\VoxelEngine\x64\Release\VoxelEngine.exe
