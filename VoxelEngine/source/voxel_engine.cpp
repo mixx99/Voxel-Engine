@@ -1,6 +1,6 @@
 #include <iostream>
 
-//#define GLEW_STATIC
+//#define GLEW_STATIC // for static glew
 
 #include <glew.h>
 #include <glfw3.h>
