@@ -12,6 +12,12 @@
 int WIDTH = 1280;
 int HEIGHT = 720;
 
+float vertices[] =
+{
+	0.0f, 0.0f, 0.0f,
+	1.0f, 0.0f, 0.f,
+	0.0f, 1.0f, 0.0f
+};
 
 int main()
 {
@@ -28,6 +34,18 @@ int main()
 		return 1;
 	}
 
+	GLuint VAO, VBO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	// position
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)(0 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);
+
 	while (!Window::isShouldClose())
 	{
 		Events::pullEvents();
@@ -40,6 +58,12 @@ int main()
 			glClearColor(1, 0, 0, 1);
 		}
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		// draw VAO
+		shader->use();
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindVertexArray(0);
 		Window::swapBuffers();
 	}
 	Window::terminate();

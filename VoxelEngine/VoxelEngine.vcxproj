@@ -19,17 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\loaders\png_loading.cpp" />
     <ClCompile Include="source\graphics\Shader.cpp" />
     <ClCompile Include="source\window\Events.cpp" />
     <ClCompile Include="source\voxel_engine.cpp" />
     <ClCompile Include="source\window\Window.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="source\graphics\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\loaders\png_loading.h" />
     <ClInclude Include="source\graphics\Shader.h" />
     <ClInclude Include="source\window\Events.h" />
     <ClInclude Include="source\window\Window.h" />
+    <ClInclude Include="source\graphics\Texture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -139,7 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\PROJECTS\voxel_engine\VoxelEngine\VoxelEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;opengl32.lib;png.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
