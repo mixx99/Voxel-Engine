@@ -1,9 +1,11 @@
 #include "Texture.h"
 #include <glew.h>
 
-Texture::Texture(unsigned int id)
+Texture::Texture(unsigned int id, int width, int height)
 	:
-	id(id)
+	id(id),
+	width(width),
+	height(height)
 {}
 
 Texture::~Texture()
