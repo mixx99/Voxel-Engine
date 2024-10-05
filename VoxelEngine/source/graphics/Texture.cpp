@@ -17,8 +17,3 @@ void Texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, id);
 }
-
-Texture* load_texture(std::string filename)
-{
-
-}
