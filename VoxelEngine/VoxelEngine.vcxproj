@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\window\Camera.cpp" />
     <ClCompile Include="source\loaders\png_loading.cpp" />
     <ClCompile Include="source\graphics\Shader.cpp" />
     <ClCompile Include="source\window\Events.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="source\graphics\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\window\Camera.h" />
     <ClInclude Include="source\loaders\png_loading.h" />
     <ClInclude Include="source\graphics\Shader.h" />
     <ClInclude Include="source\window\Events.h" />

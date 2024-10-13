@@ -5,6 +5,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "../external/glm/gtc/type_ptr.hpp"
+
 #include <glew.h>
 #include <glfw3.h>
 
@@ -22,6 +24,12 @@ Shader::~Shader()
 void Shader::use()
 {
 	glUseProgram(id);
+}
+
+void Shader::uniformMatrix(std::string name, glm::mat4 matrix)
+{
+	GLuint transformLoc = glGetUniformLocation(id, name.c_str());
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 Shader* load_shader(std::string vertexFile, std::string fragmentFile)
