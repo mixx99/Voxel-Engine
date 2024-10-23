@@ -25,12 +25,12 @@ Mesh::Mesh(const float* buffer, size_t vertices, const int* attrs) : vertices(ve
 
 	glBindVertexArray(0);
 }
-/*
+
 Mesh::~Mesh() {
 	glDeleteVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);
 }
-*/
+
 void Mesh::draw(unsigned int primitive) {
 	glBindVertexArray(vao);
 	glDrawArrays(primitive, 0, vertices);

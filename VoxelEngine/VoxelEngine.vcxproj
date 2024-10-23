@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\voxels\Chunk.cpp" />
     <ClCompile Include="source\graphics\Mesh.cpp" />
     <ClCompile Include="source\window\Camera.cpp" />
     <ClCompile Include="source\loaders\png_loading.cpp" />
@@ -29,8 +30,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\graphics\Texture.cpp" />
+    <ClCompile Include="source\voxels\voxel.cpp" />
+    <ClCompile Include="source\graphics\VoxelRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\voxels\Chunk.h" />
     <ClInclude Include="source\graphics\Mesh.h" />
     <ClInclude Include="source\window\Camera.h" />
     <ClInclude Include="source\loaders\png_loading.h" />
@@ -38,6 +42,8 @@
     <ClInclude Include="source\window\Events.h" />
     <ClInclude Include="source\window\Window.h" />
     <ClInclude Include="source\graphics\Texture.h" />
+    <ClInclude Include="source\voxels\voxel.h" />
+    <ClInclude Include="source\graphics\VoxelRenderer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

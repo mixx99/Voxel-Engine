@@ -16,10 +16,13 @@ using namespace glm;
 #include "graphics/Shader.h"
 #include "graphics/Texture.h"
 #include "graphics/Mesh.h"
+#include "graphics/VoxelRenderer.h"
 #include "window/Window.h"
 #include "window/Events.h"
 #include "window/Camera.h"
 #include "loaders/png_loading.h"
+#include "voxels/voxel.h"
+#include "voxels/Chunk.h"
 
 int WIDTH = 1280;
 int HEIGHT = 720;
@@ -36,7 +39,7 @@ float vertices[] = {
 };
 
 int attrs[] = {
-	3, 2, 0
+		3,2,  0 //null terminator
 };
 
 
@@ -51,7 +54,7 @@ int main() {
 		return 1;
 	}
 
-	Texture* texture = load_texture("res/img.png");
+	Texture* texture = load_texture("res/block.png");
 	if (texture == nullptr) {
 		std::cerr << "failed to load texture" << std::endl;
 		delete shader;
@@ -59,12 +62,14 @@ int main() {
 		return 1;
 	}
 
-
-	Mesh* mesh = new Mesh(vertices, 6, attrs);
+	VoxelRenderer renderer(1024 * 1024 * 8);
+	Chunk* chunk = new Chunk();
+	Mesh* mesh = renderer.render(chunk);
 
 	glClearColor(0.6f, 0.62f, 0.65f, 1);
 
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -123,14 +128,13 @@ int main() {
 			camera->rotate(camY, camX, 0);
 		}
 
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 		// Draw VAO
 		shader->use();
 		shader->uniformMatrix("model", model);
 		shader->uniformMatrix("projview", camera->getProjection() * camera->getView());
-		texture->bind();
 		texture->bind();
 		mesh->draw(GL_TRIANGLES);
 
@@ -141,6 +145,7 @@ int main() {
 	delete shader;
 	delete texture;
 	delete mesh;
+	delete chunk;
 
 	Window::terminate();
 	return 0;
