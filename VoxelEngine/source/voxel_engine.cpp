@@ -15,6 +15,7 @@ using namespace glm;
 
 #include "graphics/Shader.h"
 #include "graphics/Texture.h"
+#include "graphics/Mesh.h"
 #include "window/Window.h"
 #include "window/Events.h"
 #include "window/Camera.h"
@@ -34,6 +35,11 @@ float vertices[] = {
    -1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
 };
 
+int attrs[] = {
+	3, 2, 0
+};
+
+
 int main() {
 	Window::initialize(WIDTH, HEIGHT, "Window 2.0");
 	Events::initialize();
@@ -52,21 +58,9 @@ int main() {
 		Window::terminate();
 		return 1;
 	}
-	// Create VAO
-	GLuint VAO, VBO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(0 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
 
-	glBindVertexArray(0);
+	Mesh* mesh = new Mesh(vertices, 6, attrs);
 
 	glClearColor(0.6f, 0.62f, 0.65f, 1);
 
@@ -138,9 +132,7 @@ int main() {
 		shader->uniformMatrix("projview", camera->getProjection() * camera->getView());
 		texture->bind();
 		texture->bind();
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		glBindVertexArray(0);
+		mesh->draw(GL_TRIANGLES);
 
 		Window::swapBuffers();
 		Events::pullEvents();
@@ -148,8 +140,7 @@ int main() {
 
 	delete shader;
 	delete texture;
-	glDeleteBuffers(1, &VBO);
-	glDeleteVertexArrays(1, &VAO);
+	delete mesh;
 
 	Window::terminate();
 	return 0;
